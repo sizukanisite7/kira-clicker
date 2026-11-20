@@ -2,28 +2,28 @@
 
 // ===== データ定義 =====
 const GENS = [
-  { id: 'nail',   icon: '💅', name: 'ネイルチップ',     desc: '爪先からキラが溢れる',       base: 15,      kps: 0.1 },
-  { id: 'sticker',icon: '🌟', name: 'デコシール',       desc: 'なんでも貼ってキラ化',       base: 100,     kps: 1 },
-  { id: 'purikura',icon:'📸', name: 'プリ機',           desc: '盛れた写真からキラ抽出',     base: 1100,    kps: 8 },
-  { id: 'tapioca',icon: '🧋', name: 'タピオカ屋',       desc: 'タピの粒が全部キラ',         base: 12000,   kps: 47 },
-  { id: 'shop',   icon: '🛍️', name: '原宿ショップ',     desc: '行列がキラを生む',           base: 130000,  kps: 260 },
-  { id: 'live',   icon: '🎤', name: '推しのライブ会場', desc: 'ペンライトの光を回収',       base: 1.4e6,   kps: 1400 },
-  { id: 'mirror', icon: '🪩', name: '衛星ミラーボール', desc: '宇宙からキラを照射',         base: 2e7,     kps: 7800 },
-  { id: 'galaxy', icon: '🌌', name: 'ギャルクシー',     desc: '銀河まるごとデコ盛り',       base: 3.3e8,   kps: 44000 },
-  { id: 'multi',  icon: '🌈', name: '並行世界のウチ',   desc: '別の世界線のウチも集めてる', base: 5.1e9,   kps: 260000 },
+  { id: 'nail',   icon: 'nail', name: 'ネイルチップ',     desc: '爪先からキラが溢れる',       base: 15,      kps: 0.1 },
+  { id: 'sticker',icon: 'sticker', name: 'デコシール',       desc: 'なんでも貼ってキラ化',       base: 100,     kps: 1 },
+  { id: 'purikura',icon: 'purikura', name: 'プリ機',           desc: '盛れた写真からキラ抽出',     base: 1100,    kps: 8 },
+  { id: 'tapioca',icon: 'tapioca', name: 'タピオカ屋',       desc: 'タピの粒が全部キラ',         base: 12000,   kps: 47 },
+  { id: 'shop',   icon: 'shop', name: '原宿ショップ',     desc: '行列がキラを生む',           base: 130000,  kps: 260 },
+  { id: 'live',   icon: 'live', name: '推しのライブ会場', desc: 'ペンライトの光を回収',       base: 1.4e6,   kps: 1400 },
+  { id: 'mirror', icon: 'mirror', name: '衛星ミラーボール', desc: '宇宙からキラを照射',         base: 2e7,     kps: 7800 },
+  { id: 'galaxy', icon: 'galaxy', name: 'ギャルクシー',     desc: '銀河まるごとデコ盛り',       base: 3.3e8,   kps: 44000 },
+  { id: 'multi',  icon: 'multi', name: '並行世界のウチ',   desc: '別の世界線のウチも集めてる', base: 5.1e9,   kps: 260000 },
 ];
 const GROWTH = 1.15;
 
 // アップグレード: 自動生成
 const UPS = [];
 UPS.push(
-  { id: 'c1', icon: '👆', name: '盛れる指先', desc: 'タップ威力 ×2', cost: 100, req: s => s.totalClicks >= 10, apply: e => e.clickMul *= 2 },
-  { id: 'c2', icon: '🖐️', name: 'ジェルネイル', desc: 'タップ威力 ×2', cost: 5000, req: s => s.totalClicks >= 100, apply: e => e.clickMul *= 2 },
-  { id: 'c3', icon: '💖', name: 'ハートの手', desc: 'タップ威力 ×2', cost: 1e5, req: s => s.totalClicks >= 500, apply: e => e.clickMul *= 2 },
-  { id: 'cp1', icon: '✋', name: 'キラ連動タップ', desc: 'タップに毎秒生産の1%を追加', cost: 5e4, req: s => s.totalClicks >= 300, apply: e => e.clickPct += 0.01 },
-  { id: 'cp2', icon: '🙌', name: 'ギャルの本気タップ', desc: 'タップに毎秒生産の2%を追加', cost: 5e6, req: s => s.totalClicks >= 1500, apply: e => e.clickPct += 0.02 },
-  { id: 'cp3', icon: '🫶', name: '愛が重いタップ', desc: 'タップに毎秒生産の4%を追加', cost: 5e8, req: s => s.totalClicks >= 4000, apply: e => e.clickPct += 0.04 },
-  { id: 'g1', icon: '🍀', name: 'ラッキー体質', desc: 'ラッキーハートが出やすくなる', cost: 7.7e5, req: s => s.hearts >= 3, apply: e => e.heartRate *= 0.6 },
+  { id: 'c1', icon: 'sparkles', name: '盛れる指先', desc: 'タップ威力 ×2', cost: 100, req: s => s.totalClicks >= 10, apply: e => e.clickMul *= 2 },
+  { id: 'c2', icon: 'star', name: 'ジェルネイル', desc: 'タップ威力 ×2', cost: 5000, req: s => s.totalClicks >= 100, apply: e => e.clickMul *= 2 },
+  { id: 'c3', icon: 'growing', name: 'ハートの手', desc: 'タップ威力 ×2', cost: 1e5, req: s => s.totalClicks >= 500, apply: e => e.clickMul *= 2 },
+  { id: 'cp1', icon: 'dizzy', name: 'キラ連動タップ', desc: 'タップに毎秒生産の1%を追加', cost: 5e4, req: s => s.totalClicks >= 300, apply: e => e.clickPct += 0.01 },
+  { id: 'cp2', icon: 'shooting', name: 'ギャルの本気タップ', desc: 'タップに毎秒生産の2%を追加', cost: 5e6, req: s => s.totalClicks >= 1500, apply: e => e.clickPct += 0.02 },
+  { id: 'cp3', icon: 'revolving', name: '愛が重いタップ', desc: 'タップに毎秒生産の4%を追加', cost: 5e8, req: s => s.totalClicks >= 4000, apply: e => e.clickPct += 0.04 },
+  { id: 'g1', icon: 'clover', name: 'ラッキー体質', desc: 'ラッキーハートが出やすくなる', cost: 7.7e5, req: s => s.hearts >= 3, apply: e => e.heartRate *= 0.6 },
 );
 const TIERS = [[1, 10], [5, 5], [25, 50], [50, 500], [100, 5e4], [150, 5e6]];
 for (const g of GENS) {
@@ -40,22 +40,22 @@ for (const g of GENS) {
 UPS.sort((a, b) => a.cost - b.cost);
 
 const ACHS = [
-  { id: 'k1', icon: '✨', name: 'はじめてのキラ', desc: '累計1キラ', test: s => s.totalKira >= 1 },
-  { id: 'k2', icon: '💫', name: 'キラ見習い', desc: '累計1,000キラ', test: s => s.totalKira >= 1e3 },
-  { id: 'k3', icon: '🌟', name: 'キラ職人', desc: '累計100万キラ', test: s => s.totalKira >= 1e6 },
-  { id: 'k4', icon: '👑', name: 'キラの女王', desc: '累計10億キラ', test: s => s.totalKira >= 1e9 },
-  { id: 'k5', icon: '🌌', name: '宇宙一のギャル', desc: '累計1兆キラ', test: s => s.totalKira >= 1e12 },
-  { id: 't1', icon: '👆', name: '連打デビュー', desc: '100回タップ', test: s => s.totalClicks >= 100 },
-  { id: 't2', icon: '🔥', name: '指が止まらん', desc: '1,000回タップ', test: s => s.totalClicks >= 1000 },
-  { id: 't3', icon: '💥', name: '腱鞘炎注意', desc: '10,000回タップ', test: s => s.totalClicks >= 10000 },
-  { id: 'p1', icon: '⚡', name: '自動化の時代', desc: '毎秒10キラ', test: (s, e) => e.kps >= 10 },
-  { id: 'p2', icon: '🚀', name: '止まらない流れ', desc: '毎秒1万キラ', test: (s, e) => e.kps >= 1e4 },
-  { id: 'p3', icon: '🌠', name: 'キラの洪水', desc: '毎秒1億キラ', test: (s, e) => e.kps >= 1e8 },
-  { id: 'h1', icon: '💖', name: 'ラッキー！', desc: 'ラッキーハートを捕まえる', test: s => s.hearts >= 1 },
-  { id: 'h2', icon: '💘', name: '運命の人', desc: 'ラッキーハートを10回捕まえる', test: s => s.hearts >= 10 },
-  { id: 'r1', icon: '🔄', name: '生まれ変わり', desc: 'はじめて転生する', test: s => s.prestiges >= 1 },
-  { id: 'a1', icon: '🏪', name: 'オーナー', desc: '全種類の施設を1つ以上持つ', test: s => GENS.every(g => (s.gens[g.id] || 0) >= 1) },
-  { id: 'a2', icon: '🏙️', name: 'デコ盛り帝国', desc: '施設を合計500個', test: s => Object.values(s.gens).reduce((a, b) => a + b, 0) >= 500 },
+  { id: 'k1', icon: 'sparkles', name: 'はじめてのキラ', desc: '累計1キラ', test: s => s.totalKira >= 1 },
+  { id: 'k2', icon: 'dizzy', name: 'キラ見習い', desc: '累計1,000キラ', test: s => s.totalKira >= 1e3 },
+  { id: 'k3', icon: 'star', name: 'キラ職人', desc: '累計100万キラ', test: s => s.totalKira >= 1e6 },
+  { id: 'k4', icon: 'crown', name: 'キラの女王', desc: '累計10億キラ', test: s => s.totalKira >= 1e9 },
+  { id: 'k5', icon: 'galaxy', name: '宇宙一のギャル', desc: '累計1兆キラ', test: s => s.totalKira >= 1e12 },
+  { id: 't1', icon: 'ribbon', name: '連打デビュー', desc: '100回タップ', test: s => s.totalClicks >= 100 },
+  { id: 't2', icon: 'fire', name: '指が止まらん', desc: '1,000回タップ', test: s => s.totalClicks >= 1000 },
+  { id: 't3', icon: 'collision', name: '腱鞘炎注意', desc: '10,000回タップ', test: s => s.totalClicks >= 10000 },
+  { id: 'p1', icon: 'volt', name: '自動化の時代', desc: '毎秒10キラ', test: (s, e) => e.kps >= 10 },
+  { id: 'p2', icon: 'rocket', name: '止まらない流れ', desc: '毎秒1万キラ', test: (s, e) => e.kps >= 1e4 },
+  { id: 'p3', icon: 'shooting', name: 'キラの洪水', desc: '毎秒1億キラ', test: (s, e) => e.kps >= 1e8 },
+  { id: 'h1', icon: 'heart', name: 'ラッキー！', desc: 'ラッキーハートを捕まえる', test: s => s.hearts >= 1 },
+  { id: 'h2', icon: 'arrowheart', name: '運命の人', desc: 'ラッキーハートを10回捕まえる', test: s => s.hearts >= 10 },
+  { id: 'r1', icon: 'cycle', name: '生まれ変わり', desc: 'はじめて転生する', test: s => s.prestiges >= 1 },
+  { id: 'a1', icon: 'store', name: 'オーナー', desc: '全種類の施設を1つ以上持つ', test: s => GENS.every(g => (s.gens[g.id] || 0) >= 1) },
+  { id: 'a2', icon: 'city', name: 'デコ盛り帝国', desc: '施設を合計500個', test: s => Object.values(s.gens).reduce((a, b) => a + b, 0) >= 500 },
 ];
 // 実績1個ごとに生産+2%
 const ACH_BONUS = 0.02;
@@ -83,8 +83,8 @@ function load() {
 function save(manual) {
   try {
     localStorage.setItem(SAVE_KEY, JSON.stringify(S));
-    if (manual) flash('セーブしたよ〜💾');
-  } catch (_) { if (manual) flash('セーブできなかった…🥲'); }
+    if (manual) flash('セーブしたよ〜', 'sparkles');
+  } catch (_) { if (manual) flash('セーブできなかった…', 'lock'); }
 }
 
 // ===== 計算 =====
@@ -110,10 +110,11 @@ function oshiGain() {
 
 const UNITS = [[1e16, '京'], [1e12, '兆'], [1e8, '億'], [1e4, '万']];
 function fmt(n) {
-  if (n < 1000) return n < 10 && n % 1 ? n.toFixed(1) : Math.floor(n).toLocaleString('ja-JP');
+  if (n < 10) return String(Math.floor(n * 10) / 10);
+  if (n < 1000) return String(Math.floor(n));
   if (n < 1e4) return Math.floor(n).toLocaleString('ja-JP');
   if (n >= 1e20) return n.toExponential(2);
-  for (const [v, u] of UNITS) if (n >= v) return (n / v).toFixed(n / v < 100 ? 2 : 1) + u;
+  for (const [v, u] of UNITS) if (n >= v) { const x = n / v; return x.toFixed(x < 10 ? 2 : x < 100 ? 1 : 0) + u; }
 }
 
 // ===== 行動 =====
@@ -127,6 +128,7 @@ function clickGem(ev) {
   const x = ev.clientX || r.left + r.width / 2, y = ev.clientY || r.top + r.height / 2;
   popText(x, y, '+' + fmt(E.kpc));
   sparks(x, y);
+  const g = $('gem'); g.classList.remove('hit'); void g.offsetWidth; g.classList.add('hit');
   render();
 }
 function buyGen(g) {
@@ -140,7 +142,7 @@ function buyUp(u) {
   if (S.kira < u.cost || S.ups.includes(u.id)) return;
   S.kira -= u.cost;
   S.ups.push(u.id);
-  flash(`${u.icon} ${u.name} ゲット！`);
+  flash(`${u.name} ゲット！`, u.icon);
   render(true);
 }
 function prestige() {
@@ -148,7 +150,7 @@ function prestige() {
   if (g < 1) return;
   if (!confirm(`転生すると施設とアップグレードがリセットされるよ！\n代わりに推しパワー +${g}（全生産 +${g}%）がもらえる。転生する！？`)) return;
   S = freshState({ achs: S.achs, oshi: S.oshi + g, prestiges: S.prestiges + 1 });
-  flash(`🔄 転生！推しパワー +${g} 🎉`);
+  flash(`転生！推しパワー +${g}`, 'cycle');
   save();
   render(true);
 }
@@ -158,19 +160,19 @@ let nextHeart = Date.now() + rand(60, 150) * 1000;
 function rand(a, b) { return a + Math.random() * (b - a); }
 function spawnHeart() {
   const b = document.createElement('button');
-  b.id = 'golden'; b.textContent = '💖'; b.setAttribute('aria-label', 'ラッキーハート');
+  b.id = 'golden'; b.innerHTML = ic('heart'); b.setAttribute('aria-label', 'ラッキーハート');
   b.style.left = rand(5, 85) + 'vw'; b.style.top = rand(15, 80) + 'vh';
   b.onclick = () => {
     S.hearts++;
     if (Math.random() < 0.5) {
       S.buffUntil = Date.now() + 30000; S.buffMul = 7;
-      flash('💖 フィーバー！30秒間 生産×7 🔥');
+      flash('フィーバー！30秒間 生産×7', 'fire');
     } else {
       recompute();
       const bonus = Math.max(E.kps * 900, E.kpc * 50, 100);
       const amt = Math.min(bonus, S.kira * 0.25 + 100);
       gain(amt);
-      flash(`💖 ラッキー！+${fmt(amt)} キラ`);
+      flash(`ラッキー！+${fmt(amt)} キラ`, 'heart');
     }
     b.remove(); render(true);
   };
@@ -180,6 +182,8 @@ function spawnHeart() {
 
 // ===== 表示 =====
 const $ = id => document.getElementById(id);
+const ic = (n, cls = '') => `<img class="ic ${cls}" src="assets/icons/${n}.png" alt="" draggable="false">`;
+const COST = n => `<span class="cost">${ic('gem', 'mini')}${fmt(n)}</span>`;
 function popText(x, y, t) {
   const d = document.createElement('div');
   d.className = 'pop'; d.textContent = t;
@@ -189,17 +193,17 @@ function popText(x, y, t) {
 function sparks(x, y) {
   for (let i = 0; i < 5; i++) {
     const s = document.createElement('div');
-    s.className = 'spark'; s.textContent = ['✨', '💗', '⭐', '💎'][i % 4];
+    s.className = 'spark'; s.innerHTML = ic(['sparkles', 'star', 'growing', 'gem'][i % 4]);
     const a = Math.random() * Math.PI * 2, d = rand(40, 90);
-    s.style.left = x + 'px'; s.style.top = y + 'px';
+    s.style.left = (x - 14) + 'px'; s.style.top = (y - 14) + 'px';
     s.style.setProperty('--dx', Math.cos(a) * d + 'px');
     s.style.setProperty('--dy', Math.sin(a) * d + 'px');
     document.body.appendChild(s); setTimeout(() => s.remove(), 700);
   }
 }
 let toastTimer;
-function flash(msg) {
-  const t = $('toast'); t.textContent = msg; t.classList.add('show');
+function flash(msg, icon = 'sparkles') {
+  const t = $('toast'); t.innerHTML = ic(icon); t.append(msg); t.classList.add('show');
   clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove('show'), 2600);
 }
 
@@ -215,7 +219,11 @@ function render(force) {
   recompute();
   checkAchs();
   $('kira').textContent = fmt(S.kira);
-  $('kps').textContent = fmt(E.kps) + (E.buff > 1 ? ` 🔥×${E.buff}` : '');
+  $('kps').textContent = fmt(E.kps);
+  const left = Math.ceil((S.buffUntil - Date.now()) / 1000);
+  $('buff').hidden = E.buff <= 1;
+  if (E.buff > 1) $('buffText').textContent = `フィーバー ×${E.buff} ・ ${left}秒`;
+  document.body.classList.toggle('fever', E.buff > 1);
   $('kpc').textContent = fmt(E.kpc);
   $('oshi').textContent = fmt(S.oshi);
   $('oshiBonus').textContent = fmt(S.oshi);
@@ -234,33 +242,35 @@ function render(force) {
     const gl = $('gens'); gl.innerHTML = '';
     visGens.forEach(g => {
       const each = g.kps * E.genMul[g.id] * E.globalMul;
-      const el = li('gen', `<div class="icon">${g.icon}</div>
+      const el = li('gen', `<div class="icon">${ic(g.icon)}</div>
         <div class="info"><div class="name">${g.name}</div>
         <div class="desc">${g.desc} ・ 1個 ${fmt(each)}/秒</div>
-        <div class="cost" data-cost>💎 ${fmt(genCost(g, buyN))}</div></div>
+        ${COST(genCost(g, buyN))}<div class="bar"><i></i></div></div>
         <div class="count">${S.gens[g.id] || 0}</div>`, () => buyGen(g));
       el.dataset.gen = g.id; gl.appendChild(el);
     });
     const ul = $('ups'); ul.innerHTML = '';
-    if (!visUps.length) ul.appendChild(li('locked', '<div class="info"><div class="desc">今買えるアップグレードはないよ〜。施設を増やそ！</div></div>'));
+    if (!visUps.length) ul.appendChild(li('note', '<div class="info"><div class="desc">今買えるアップグレードはないよ〜。施設を増やそ！</div></div>'));
     visUps.forEach(u => {
-      const el = li('up', `<div class="icon">${u.icon}</div>
+      const el = li('up', `<div class="icon">${ic(u.icon)}</div>
         <div class="info"><div class="name">${u.name}</div><div class="desc">${u.desc}</div>
-        <div class="cost">💎 ${fmt(u.cost)}</div></div>`, () => buyUp(u));
+        ${COST(u.cost)}</div>`, () => buyUp(u));
       el.dataset.cost = u.cost; ul.appendChild(el);
     });
     const al = $('achs'); al.innerHTML = '';
-    al.appendChild(li('done', `<div class="info"><div class="desc">実績1個につき全生産 +${ACH_BONUS * 100}%！</div></div>`));
+    al.appendChild(li('note', `<div class="info"><div class="desc">実績1個につき全生産 +${ACH_BONUS * 100}%！</div></div>`));
     ACHS.forEach(a => {
       const got = S.achs.includes(a.id);
-      al.appendChild(li(got ? 'done ach' : 'locked ach', `<div class="icon">${got ? a.icon : '🔒'}</div>
+      al.appendChild(li(got ? 'done ach' : 'locked ach', `<div class="icon">${ic(got ? a.icon : 'lock')}</div>
         <div class="info"><div class="name">${a.name}</div><div class="desc">${a.desc}</div></div>`));
     });
   }
   // 買えるかどうかだけ毎フレーム更新
   document.querySelectorAll('#gens .item').forEach(el => {
     const g = GENS.find(x => x.id === el.dataset.gen);
-    el.classList.toggle('locked', S.kira < genCost(g, buyN));
+    const c = genCost(g, buyN);
+    el.classList.toggle('locked', S.kira < c);
+    el.querySelector('.bar i').style.width = Math.min(100, S.kira / c * 100) + '%';
   });
   document.querySelectorAll('#ups .item.up').forEach(el => {
     el.classList.toggle('locked', S.kira < +el.dataset.cost);
@@ -270,7 +280,7 @@ function checkAchs() {
   for (const a of ACHS) {
     if (!S.achs.includes(a.id) && a.test(S, E)) {
       S.achs.push(a.id);
-      flash(`🏆 実績解除：${a.name}`);
+      flash(`実績解除：${a.name}`, a.icon);
     }
   }
 }
@@ -302,7 +312,7 @@ load();
   const earned = E.kps * away * 0.5;
   if (earned >= 1 && away > 30) {
     gain(earned);
-    setTimeout(() => flash(`おかえり〜！留守中に ${fmt(earned)} キラ集めといたよ💕`), 300);
+    setTimeout(() => flash(`おかえり〜！留守中に ${fmt(earned)} キラ集めといたよ`, 'revolving'), 300);
   }
 }
 $('gem').addEventListener('click', clickGem);
@@ -310,7 +320,7 @@ $('prestigeBtn').onclick = prestige;
 $('saveBtn').onclick = () => save(true);
 $('resetBtn').onclick = () => {
   if (confirm('ほんとに全部消しちゃう！？推しパワーも実績も消えるよ！？')) {
-    S = freshState(); save(); render(true); flash('まっさらになったよ🫧');
+    S = freshState(); save(); render(true); flash('まっさらになったよ', 'sparkles');
   }
 };
 document.querySelectorAll('.tab').forEach(t => t.onclick = () => {
@@ -327,3 +337,28 @@ setInterval(tick, 100);
 setInterval(save, 10000);
 window.addEventListener('beforeunload', () => save());
 render(true);
+
+// ===== 背景の星 =====
+(() => {
+  const cv = $('stars'), cx = cv.getContext('2d');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let stars = [], w, h;
+  function resize() {
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    w = cv.width = innerWidth * dpr; h = cv.height = innerHeight * dpr;
+    stars = Array.from({ length: Math.round(innerWidth * innerHeight / 9000) }, () => ({
+      x: Math.random() * w, y: Math.random() * h, r: (Math.random() * 1.2 + .3) * dpr,
+      p: Math.random() * Math.PI * 2, s: Math.random() * .002 + .0006,
+    }));
+  }
+  function draw(t) {
+    cx.clearRect(0, 0, w, h);
+    cx.fillStyle = '#fff';
+    for (const st of stars) {
+      cx.globalAlpha = .25 + .75 * Math.abs(Math.sin(st.p + t * st.s));
+      cx.beginPath(); cx.arc(st.x, st.y, st.r, 0, Math.PI * 2); cx.fill();
+    }
+    if (!reduce) requestAnimationFrame(draw);
+  }
+  addEventListener('resize', resize); resize(); requestAnimationFrame(draw);
+})();

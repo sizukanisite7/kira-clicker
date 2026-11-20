@@ -5,34 +5,62 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>キラキラクリッカー</title>
 <meta name="description" content="キラキラを集めてデコ盛り帝国を築くインクリメンタルクリッカー">
+<meta name="theme-color" content="#160b1f">
+<link rel="icon" href="assets/icons/gem.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="bg" aria-hidden="true">
+  <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+  <canvas id="stars"></canvas>
+</div>
+
 <header>
-  <h1>✨ キラキラクリッカー ✨</h1>
-  <div class="stats">
-    <div class="kira"><span id="kira">0</span> キラ</div>
-    <div class="sub"><span id="kps">0</span> キラ/秒 ・ 1タップ <span id="kpc">1</span></div>
-  </div>
+  <p class="eyebrow">INCREMENTAL CLICKER</p>
+  <h1>キラキラクリッカー</h1>
 </header>
 
 <main>
-  <section class="click-area">
-    <button id="gem" aria-label="キラキラをタップ">💎</button>
-    <p class="hint">タップしてキラを集めよ〜！</p>
-    <div class="prestige">
-      <div>推しパワー: <b id="oshi">0</b>（全生産 +<span id="oshiBonus">0</span>%）</div>
-      <button id="prestigeBtn" disabled>転生して推しパワー +<span id="oshiGain">0</span></button>
+  <section class="stage">
+    <div class="counter">
+      <div class="kira"><span id="kira">0</span><small>キラ</small></div>
+      <div class="rates">
+        <span class="chip"><img class="ic" src="assets/icons/volt.png" alt=""><b id="kps">0</b>/秒</span>
+        <span class="chip"><img class="ic" src="assets/icons/sparkles.png" alt=""><b id="kpc">1</b>/タップ</span>
+      </div>
+      <div id="buff" class="buff" hidden><img class="ic" src="assets/icons/fire.png" alt=""><span id="buffText"></span></div>
+    </div>
+
+    <div class="gem-wrap">
+      <div class="halo" aria-hidden="true"></div>
+      <div class="ring" aria-hidden="true"></div>
+      <button id="gem" aria-label="キラキラをタップ"><img src="assets/icons/gem.png" alt="" draggable="false"></button>
+    </div>
+    <p class="hint">タップしてキラを集めよう</p>
+
+    <div class="card prestige">
+      <div class="prestige-head">
+        <img class="ic big" src="assets/icons/crown.png" alt="">
+        <div>
+          <div class="label">推しパワー</div>
+          <div class="value"><span id="oshi">0</span> <small>全生産 +<span id="oshiBonus">0</span>%</small></div>
+        </div>
+      </div>
+      <button id="prestigeBtn" class="btn" disabled>転生して +<span id="oshiGain">0</span></button>
     </div>
   </section>
 
-  <section class="shop">
-    <div class="tabs">
+  <section class="card shop">
+    <nav class="tabs" role="tablist">
       <button class="tab active" data-tab="gens">お店</button>
       <button class="tab" data-tab="ups">アップグレード</button>
-      <button class="tab" data-tab="achs">実績 <span id="achCount">0</span></button>
-    </div>
+      <button class="tab" data-tab="achs">実績 <span id="achCount" class="pill">0</span></button>
+    </nav>
     <div class="buy-mode" id="buyMode">
+      <span>まとめ買い</span>
       <button data-n="1" class="active">×1</button>
       <button data-n="10">×10</button>
       <button data-n="100">×100</button>
@@ -44,12 +72,14 @@
 </main>
 
 <footer>
-  <button id="saveBtn">セーブ</button>
-  <button id="resetBtn" class="danger">データ全消し</button>
-  <span id="saveMsg"></span>
+  <div class="actions">
+    <button id="saveBtn" class="btn ghost">セーブ</button>
+    <button id="resetBtn" class="btn ghost danger">データ全消し</button>
+  </div>
+  <p class="credit">Icons: <a href="https://github.com/microsoft/fluentui-emoji" target="_blank" rel="noopener">Fluent Emoji</a> © Microsoft (MIT) ・ Fonts: Zen Maru Gothic, Fredoka (OFL)</p>
 </footer>
 
-<div id="toast"></div>
+<div id="toast" role="status"></div>
 <script src="game.js"></script>
 </body>
 </html>
