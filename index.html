@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>キラキラクリッカー</title>
+<meta name="description" content="キラキラを集めてデコ盛り帝国を築くインクリメンタルクリッカー">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>✨ キラキラクリッカー ✨</h1>
+  <div class="stats">
+    <div class="kira"><span id="kira">0</span> キラ</div>
+    <div class="sub"><span id="kps">0</span> キラ/秒 ・ 1タップ <span id="kpc">1</span></div>
+  </div>
+</header>
+
+<main>
+  <section class="click-area">
+    <button id="gem" aria-label="キラキラをタップ">💎</button>
+    <p class="hint">タップしてキラを集めよ〜！</p>
+    <div class="prestige">
+      <div>推しパワー: <b id="oshi">0</b>（全生産 +<span id="oshiBonus">0</span>%）</div>
+      <button id="prestigeBtn" disabled>転生して推しパワー +<span id="oshiGain">0</span></button>
+    </div>
+  </section>
+
+  <section class="shop">
+    <div class="tabs">
+      <button class="tab active" data-tab="gens">お店</button>
+      <button class="tab" data-tab="ups">アップグレード</button>
+      <button class="tab" data-tab="achs">実績 <span id="achCount">0</span></button>
+    </div>
+    <div class="buy-mode" id="buyMode">
+      <button data-n="1" class="active">×1</button>
+      <button data-n="10">×10</button>
+      <button data-n="100">×100</button>
+    </div>
+    <ul id="gens" class="panel"></ul>
+    <ul id="ups" class="panel hidden"></ul>
+    <ul id="achs" class="panel hidden"></ul>
+  </section>
+</main>
+
+<footer>
+  <button id="saveBtn">セーブ</button>
+  <button id="resetBtn" class="danger">データ全消し</button>
+  <span id="saveMsg"></span>
+</footer>
+
+<div id="toast"></div>
+<script src="game.js"></script>
+</body>
+</html>
